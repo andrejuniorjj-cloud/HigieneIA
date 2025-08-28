@@ -1,16 +1,17 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import path from "path";
 
 export default defineConfig({
-  root: "client", // define a pasta client como raiz
+  root: "client", // Define a pasta client como raiz
   plugins: [react()],
   build: {
-    outDir: "../dist", // saída final da build
-    emptyOutDir: true,
+    outDir: path.resolve(__dirname, "dist"), // Saída final da build dentro da raiz do projeto
+    emptyOutDir: true, // Limpa a pasta dist antes da build
   },
   resolve: {
     alias: {
-      "@": "/src", // permite usar @/ para importar da src
+      "@": path.resolve(__dirname, "client/src"), // Permite usar @/ para importar da src
     },
   },
 });
